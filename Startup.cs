@@ -9,8 +9,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AppWeb_ASP_NET_Core.Data;
 using AppWeb_ASP_NET_Core.Data.Produtos;
 using AppWeb_ASP_NET_Core.Models.Produtos.IRepositorio;
+using Microsoft.EntityFrameworkCore;
 
 namespace AppWeb_ASP_NET_Core
 {
@@ -33,6 +35,8 @@ namespace AppWeb_ASP_NET_Core
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddDbContext<MyDBContext>(Option => 
+                Option.UseSqlServer(Configuration.GetConnectionString("MyDBContext")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 

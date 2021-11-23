@@ -20,6 +20,13 @@ namespace AppWeb_ASP_NET_Core.Models.Produtos
 
         public Guid Id { get; set; }
 
+        public string Nome { get; set; }
+
+        public double Preco { get; set; }
+
+        public int Avaliacao { get; set; }
+
+        public bool Validade { get; set; }
         #endregion
     }
 }
