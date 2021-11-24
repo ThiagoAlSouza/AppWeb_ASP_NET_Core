@@ -33,10 +33,18 @@ namespace AppWeb_ASP_NET_Core.Controllers.Produtos
                 Validade = true
             };
 
-            _context.Produtos.Add(produto);
-            _context.SaveChanges();
+            //_context.Produtos.Add(produto);
+            //_context.SaveChanges();
 
-            _context.Produtos.Remove(produto);
+            //_context.Produtos.Remove(produto);
+            //_context.SaveChanges();
+
+            var produto2 = _context.Produtos.FirstOrDefault();
+
+            produto2.Id = Guid.NewGuid();
+            produto2.Nome = "Feijão";
+
+            _context.Produtos.Add(produto2);
             _context.SaveChanges();
 
             return View();
