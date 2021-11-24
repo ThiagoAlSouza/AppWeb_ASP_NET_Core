@@ -36,6 +36,9 @@ namespace AppWeb_ASP_NET_Core.Controllers.Produtos
             _context.Produtos.Add(produto);
             _context.SaveChanges();
 
+            _context.Produtos.Remove(produto);
+            _context.SaveChanges();
+
             return View();
         }
     }
