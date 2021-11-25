@@ -39,12 +39,12 @@ namespace AppWeb_ASP_NET_Core.Controllers.Produtos
             //_context.Produtos.Remove(produto);
             //_context.SaveChanges();
 
-            var produto2 = _context.Produtos.FirstOrDefault();
+            var produto3 = _context.Produtos.FirstOrDefault(x => x.Nome == "Feijão");
 
-            produto2.Id = Guid.NewGuid();
-            produto2.Nome = "Feijão";
+            produto3.Id = Guid.NewGuid();
+            produto3.Nome = "Feijão";
 
-            _context.Produtos.Add(produto2);
+            _context.Produtos.Add(produto3);
             _context.SaveChanges();
 
             return View();
