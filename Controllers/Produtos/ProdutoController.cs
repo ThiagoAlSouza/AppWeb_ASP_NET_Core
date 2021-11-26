@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using AppWeb_ASP_NET_Core.Data;
-using AppWeb_ASP_NET_Core.Models.Produtos;
 using AppWeb_ASP_NET_Core.Models.Produtos.IRepositorio;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace AppWeb_ASP_NET_Core.Controllers.Produtos
 {
@@ -14,7 +10,7 @@ namespace AppWeb_ASP_NET_Core.Controllers.Produtos
     public class ProdutoController : Controller
     {
         private readonly IRepositorioProduto _repositorioProduto;
-        private readonly MyDBContext _context ;
+        private readonly MyDBContext _context;
 
         public ProdutoController(IRepositorioProduto repositorioProduto, MyDBContext context)
         {
@@ -25,13 +21,13 @@ namespace AppWeb_ASP_NET_Core.Controllers.Produtos
 
         public IActionResult Produto()
         {
-            var produto = new Produto
-            {
-                Nome = "Arroz",
-                Preco = 19.99,
-                Avaliacao = 10,
-                Validade = true
-            };
+            //var produto = new Produto
+            //{
+            //    Nome = "Arroz",
+            //    Preco = 19.99,
+            //    Avaliacao = 10,
+            //    Validade = true
+            //};
 
             //_context.Produtos.Add(produto);
             //_context.SaveChanges();
@@ -41,11 +37,14 @@ namespace AppWeb_ASP_NET_Core.Controllers.Produtos
 
             var produto3 = _context.Produtos.FirstOrDefault(x => x.Nome == "Feijão");
 
-            produto3.Id = Guid.NewGuid();
-            produto3.Nome = "Feijão";
+            if (produto3 != null)
+            {
+                produto3.Id = Guid.NewGuid();
+                produto3.Nome = "Feijão";
 
-            _context.Produtos.Add(produto3);
-            _context.SaveChanges();
+                _context.Produtos.Add(produto3);
+                _context.SaveChanges();
+            }
 
             return View();
         }
