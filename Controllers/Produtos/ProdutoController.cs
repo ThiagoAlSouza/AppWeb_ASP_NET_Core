@@ -35,16 +35,26 @@ namespace AppWeb_ASP_NET_Core.Controllers.Produtos
             //_context.Produtos.Remove(produto);
             //_context.SaveChanges();
 
-            var produto3 = _context.Produtos.FirstOrDefault(x => x.Nome == "Feijão");
+            var produtos = _context.Produtos.AsQueryable();
 
-            if (produto3 != null)
+            foreach (var produto in produtos)
             {
-                produto3.Id = Guid.NewGuid();
-                produto3.Nome = "Feijão";
-
-                _context.Produtos.Add(produto3);
-                _context.SaveChanges();
+                if (produto.Preco > 19.98)
+                {
+                    produto.Preco = 9.99;
+                }
             }
+
+            _context.SaveChanges();
+
+            //if (produto3 != null)
+            //{
+            //    produto3.Id = Guid.NewGuid();
+            //    produto3.Nome = "Feijão";
+
+            //    _context.Produtos.Add(produto3);
+            //    _context.SaveChanges();
+            //}
 
             return View();
         }
