@@ -35,14 +35,25 @@ namespace AppWeb_ASP_NET_Core.Controllers.Produtos
             //_context.Produtos.Remove(produto);
             //_context.SaveChanges();
 
+            //var produtos = _context.Produtos.AsQueryable();
+
+            //foreach (var produto in produtos)
+            //{
+            //    if (produto.Preco > 19.98)
+            //    {
+            //        produto.Preco = 9.99;
+            //    }
+            //}
+
+            //_context.SaveChanges();
+
             var produtos = _context.Produtos.AsQueryable();
 
             foreach (var produto in produtos)
             {
-                if (produto.Preco > 19.98)
-                {
-                    produto.Preco = 9.99;
-                }
+                produto.Validade = false;
+
+                _context.Produtos.Update(produto);
             }
 
             _context.SaveChanges();
