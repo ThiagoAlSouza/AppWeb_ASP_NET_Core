@@ -50,16 +50,16 @@ namespace AppWeb_ASP_NET_Core.Controllers.Produtos
 
             var produtos = _context.Produtos.AsQueryable();
 
-            foreach (var produto in produtos)
-            {
-                produto.Validade = false;
+            //foreach (var produto in produtos)
+            //{
+            //    produto.Validade = false;
 
-                _context.Produtos.Update(produto);
-            }
-
-            _context.SaveChanges();
+            //    _context.Produtos.Update(produto);
+            //}
 
             _context.Produtos.RemoveRange(produtos);
+
+            _context.SaveChanges();
 
             //if (produto3 != null)
             //{
