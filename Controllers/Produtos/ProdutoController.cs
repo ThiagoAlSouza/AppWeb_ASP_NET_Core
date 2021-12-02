@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using AppWeb_ASP_NET_Core.Data;
 using AppWeb_ASP_NET_Core.Models.Produtos.IRepositorio;
 using Microsoft.AspNetCore.Mvc;
@@ -57,6 +58,8 @@ namespace AppWeb_ASP_NET_Core.Controllers.Produtos
             }
 
             _context.SaveChanges();
+
+            _context.Produtos.RemoveRange(produtos);
 
             //if (produto3 != null)
             //{
