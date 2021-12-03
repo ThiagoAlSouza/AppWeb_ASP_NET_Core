@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using AppWeb_ASP_NET_Core.Data;
+using AppWeb_ASP_NET_Core.Models.Produtos;
 using AppWeb_ASP_NET_Core.Models.Produtos.IRepositorio;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,19 +20,19 @@ namespace AppWeb_ASP_NET_Core.Controllers.Produtos
             _context = context;
         }
 
-
+        [Route("Produtos")]
         public IActionResult Produto()
         {
-            //var produto = new Produto
-            //{
-            //    Nome = "Arroz",
-            //    Preco = 19.99,
-            //    Avaliacao = 10,
-            //    Validade = true
-            //};
+            var produto = new Produto
+            {
+                Nome = "Arroz",
+                Preco = 19.99,
+                Avaliacao = 10,
+                Validade = true
+            };
 
-            //_context.Produtos.Add(produto);
-            //_context.SaveChanges();
+            _context.Produtos.Add(produto);
+            _context.SaveChanges();
 
             //_context.Produtos.Remove(produto);
             //_context.SaveChanges();
@@ -48,7 +49,7 @@ namespace AppWeb_ASP_NET_Core.Controllers.Produtos
 
             //_context.SaveChanges();
 
-            var produtos = _context.Produtos.AsQueryable();
+            //var produtos = _context.Produtos.AsQueryable();
 
             //foreach (var produto in produtos)
             //{
@@ -57,9 +58,9 @@ namespace AppWeb_ASP_NET_Core.Controllers.Produtos
             //    _context.Produtos.Update(produto);
             //}
 
-            _context.Produtos.RemoveRange(produtos);
+            //_context.Produtos.RemoveRange(produtos);
 
-            _context.SaveChanges();
+            //_context.SaveChanges();
 
             //if (produto3 != null)
             //{
